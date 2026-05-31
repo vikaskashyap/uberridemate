@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>RideMate · Trusted Driver Pass</title>
+
+  <!-- PWA / installable mobile app -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="RideMate" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="icon" href="icon.svg" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>RideMate</span>
+      <span>5G&nbsp;&nbsp;100%</span>
+    </div>
+
+    <div class="screen">
+      <div id="view" class="scroll"></div>
+      <div id="sheet-scrim" class="sheet-scrim"></div>
+      <div id="sheet" class="sheet"><div class="grip"></div><div id="sheet-body" class="sheet-body"></div></div>
+      <div id="toast" class="toast"></div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button data-tab="home"><span class="ico">🏠</span>Home</button>
+      <button data-tab="trips"><span class="ico">📋</span>Trips</button>
+      <button data-tab="trusted"><span class="ico">🛡️</span>Trusted</button>
+      <button data-tab="pass"><span class="ico">🎫</span>Pass</button>
+      <button data-tab="activity"><span class="ico">🔔</span>Activity</button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

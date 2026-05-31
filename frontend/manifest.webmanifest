@@ -1,0 +1,14 @@
+{
+  "name": "RideMate — Trusted Driver Pass",
+  "short_name": "RideMate",
+  "description": "Ride with drivers you trust. Subscribe to a monthly commute pass with priority matching.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
