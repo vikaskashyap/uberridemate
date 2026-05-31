@@ -1,0 +1,14 @@
+{
+  "name": "uberridemate",
+  "version": "1.0.0",
+  "description": "RideMate — Trusted Driver Pass (Vercel deployment root)",
+  "private": true,
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}
