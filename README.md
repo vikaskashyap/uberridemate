@@ -1,5 +1,8 @@
 # RideMate — Trusted Driver Pass
 
+**🔗 Live demo: https://uberridemate.vercel.app** (open on a phone and *Add to Home Screen* for the full app feel)
+
+
 Full-stack implementation of the **Trusted Driver Pass** feature (per `requirements.md` and `PRD-uber-ride-pass.docx`). Lets frequent commuters subscribe to preferred bike drivers for recurring rides — eligibility-gated trusted list, driver invitation flow, monthly subscription, and a priority matching engine. Pilot: **Delhi NCR**.
 
 Built in **Uber's current design theme** (monochrome black/white, Uber green accent, Uber Move-style type, pill buttons, bottom sheets, map canvas).
@@ -20,6 +23,25 @@ On startup the server prints two URLs:
 ```
 
 > Runs with zero external setup: the data layer is seeded in-memory (`backend/db/store.js`) and Razorpay/FCM are stubbed. The matching Postgres schema is in `backend/db/schema.sql` — swap the store for `pg` to go live.
+
+## Deploy (Vercel)
+
+Already deployed at **https://uberridemate.vercel.app**. To redeploy after changes:
+
+```bash
+npx vercel --prod --scope <your-team>
+```
+
+How it maps to Vercel (see `vercel.json`):
+- `/api/*` → a single serverless function (`api/index.js`) wrapping the Express app
+- everything else → static files served from `frontend/` via the CDN
+
+> **Serverless state caveat:** the demo uses an in-memory store, and serverless
+> instances are ephemeral. State (trusted drivers you add, passes you buy, rides
+> you take) is consistent while the function instance stays **warm** — fine for a
+> single walk-through — but **resets to the seed on a cold start**. For durable
+> state, swap `backend/db/store.js` for a database using `backend/db/schema.sql`
+> (e.g. Vercel Postgres / Neon).
 
 ## Use it on your phone (installable PWA)
 
